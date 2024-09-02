@@ -1,0 +1,27 @@
+import os
+import time
+import datetime
+import zipfile
+
+def scan_and_rename_files(source_folder, target_folder, prefix):
+    if not os.path.exists(target_folder):
+        os.makedirs(target_folder)
+
+    files = os.listdir(source_folder)
+    for file in files:
+        if file.endswith('.zip'):
+            file_path = os.path.join(source_folder, file)
+            date_str = datetime.datetime.now().strftime('%Y%m%d')
+            new_file_name = f"{prefix}_{date_str}_{file}"
+            new_file_path = os.path.join(source_folder, new_file_name)
+            os.rename(file_path, new_file_path)
+
+            with zipfile.ZipFile(new_file_path, 'r') as zip_ref:
+                zip_ref.extractall(os.path.join(target_folder, date_str))
+
+if __name__ == "__main__":
+    source_folder = "D:\\EnjoyLibrary\\1000h-english-learning-record\\rename-unzip"
+    target_folder = "D:\\EnjoyLibrary\\1000h-english-learning-record"
+    prefix = "自定义字母"  # 请替换为您想要的自定义字母
+    time.sleep(1800)  # 等待半小时
+    scan_and_rename_files(source_folder, target_folder, prefix)

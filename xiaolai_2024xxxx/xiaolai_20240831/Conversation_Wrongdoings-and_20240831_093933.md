@@ -1,0 +1,47 @@
+
+0831_Wrongdoings-and_conversation
+
+
+## Conversation 1: Wrongdoing and Intentions
+
+**Alloy**: You know, I can't wrap my head around why people intentionally do wrong things.
+
+**Nova**: Right? It's baffling! It seems like they know it's wrong but still go for it.
+
+**Alloy**: Exactly! I mean, what motivates someone to take something that doesn’t belong to them?
+
+**Nova**: Curiosity, maybe? Or perhaps they think they can get away with it.
+
+**Alloy**: True, but don't you think that risk of getting caught should deter them?
+
+**Nova**: You'd think so, but some people just live on the edge. It's like they have no moral compass.
+
+**Alloy**: That’s an interesting point. Maybe it all comes down to upbringing and values.
+
+**Nova**: For sure! A strong family background can really shape one’s intention.
+
+**Alloy**: However, I still find it hard to sympathize with someone who knowingly does wrong.
+
+**Nova**: I get that. It makes me frustrated! Like, how can they just ignore the impact of their actions?
+
+## Conversation 2: Justifying Wrong Actions
+
+**Alloy**: Sometimes I wonder if people try to justify their wrongdoings.
+
+**Nova**: Oh, definitely! It's like they build a whole narrative to make it seem okay.
+
+**Alloy**: Exactly! It's mind-boggling how they twist things to feel better about their actions.
+
+**Nova**: I’m curious though, do you think anyone can be completely devoid of intention when doing wrong?
+
+**Alloy**: I doubt it! On some level, I believe they know what they're doing.
+
+**Nova**: Right? Ignorance only goes so far. You can't just plead ignorance all the time.
+
+**Alloy**: But what about those who do wrong out of desperation? Is that different?
+
+**Nova**: I guess that’s a gray area. It’s tough! I feel empathy, but some things just can't be excused.
+
+**Alloy**: Agreed. If it’s a pattern of behavior, it just screams bad intentions to me.
+
+**Nova**: Exactly! It's not just one mistake; it's a choice to keep doing it.

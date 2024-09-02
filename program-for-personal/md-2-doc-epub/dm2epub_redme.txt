@@ -1,0 +1,388 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww13440\viewh7240\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \'d2\'d4\'cf\'c2\'ca\'c7\'d7\'ee\'d6\'d5\'b5\'c4\'cd\'ea\'d5\'fb\'b4\'fa\'c2\'eb\'bc\'b0\'c6\'e4\'ca\'b9\'d3\'c3\'cb\'b5\'c3\'f7\'a1\'a3\'d5\'e2\'b8\'f6\'b4\'fa\'c2\'eb\'bb\'e1\'d7\'d4\'b6\'af\'c9\'a8\'c3\'e8\'d6\'b8\'b6\'a8\'c2\'b7\'be\'b6\'bc\'b0\'c6\'e4\'cb\'f9\'d3\'d0\'d7\'d3\'ce\'c4\'bc\'fe\'bc\'d0\'d6\'d0\'b5\'c4
+\f1  `.md` 
+\f0 \'ce\'c4\'bc\'fe\'a3\'ac\'b2\'a2\'b8\'f9\'be\'dd\'d7\'d4\'b6\'a8\'d2\'e5\'b9\'d8\'bc\'fc\'d7\'d6\'bd\'f8\'d0\'d0\'b9\'fd\'c2\'cb\'a1\'a3\'c8\'e7\'b9\'fb\'b7\'a2\'cf\'d6\'b7\'fb\'ba\'cf\'cc\'f5\'bc\'fe\'b5\'c4
+\f1  `.md` 
+\f0 \'ce\'c4\'bc\'fe\'c7\'d2\'ce\'c4\'bc\'fe\'d6\'ae\'c7\'b0\'ce\'b4\'b4\'a6\'c0\'ed\'b9\'fd\'a3\'ac\'bb\'e1\'d7\'d4\'b6\'af\'d7\'aa\'bb\'bb\'ce\'aa
+\f1  `.epub` 
+\f0 \'ba\'cd
+\f1  `.doc` 
+\f0 \'b8\'f1\'ca\'bd\'a3\'ac\'b2\'a2\'b1\'a3\'b4\'e6\'b5\'bd\'d6\'b8\'b6\'a8\'b5\'c4\'ca\'e4\'b3\'f6\'c4\'bf\'c2\'bc\'a1\'a3
+\f1 \
+\
+### 
+\f0 \'cd\'ea\'d5\'fb\'b4\'fa\'c2\'eb
+\f1 \
+\
+```python\
+import os\
+import pypandoc\
+import time\
+from watchdog.observers import Observer\
+from watchdog.events import FileSystemEventHandler\
+\
+# 
+\f0 \'d7\'d4\'b6\'a8\'d2\'e5\'c2\'b7\'be\'b6
+\f1 \
+source_directory = \'93/path/to/your/source_directory\'94  # 
+\f0 \'ca\'e4\'c8\'eb\'ce\'c4\'bc\'fe\'bc\'d0\'c2\'b7\'be\'b6
+\f1 \
+output_directory = \'93/path/to/your/output_directory\'94  # 
+\f0 \'ca\'e4\'b3\'f6\'ce\'c4\'bc\'fe\'bc\'d0\'c2\'b7\'be\'b6
+\f1 \
+\
+# 
+\f0 \'d7\'d4\'b6\'a8\'d2\'e5\'b9\'d8\'bc\'fc\'d7\'d6\'c1\'d0\'b1\'ed
+\f1 \
+keywords = [\'93keyword1\'94, \'93keyword2\'94, \'93keyword3\'94]  # 
+\f0 \'d4\'da\'d5\'e2\'c0\'ef\'cc\'ed\'bc\'d3\'c4\'e3\'cf\'eb\'d2\'aa\'c6\'a5\'c5\'e4\'b5\'c4\'b9\'d8\'bc\'fc\'d7\'d6
+\f1 \
+\
+# 
+\f0 \'d2\'d1\'b4\'a6\'c0\'ed\'ce\'c4\'bc\'fe\'b5\'c4\'c8\'d5\'d6\'be\'ce\'c4\'bc\'fe\'c2\'b7\'be\'b6
+\f1 \
+log_file_path = \'93processed_files.log\'94\
+\
+class FileHandler(FileSystemEventHandler):\
+    def on_created(self, event):\
+        # 
+\f0 \'c8\'e7\'b9\'fb\'b7\'a2\'cf\'d6\'d0\'c2\'ce\'c4\'bc\'fe\'ca\'c7
+\f1 .md 
+\f0 \'ce\'c4\'bc\'fe\'b2\'a2\'c7\'d2\'b7\'fb\'ba\'cf\'b9\'d8\'bc\'fc\'d7\'d6
+\f1 \
+        if event.src_path.endswith(\'93.md\'94) and self.contains_keywords(event.src_path):\
+            self.convert_file(event.src_path)\
+\
+    def contains_keywords(self, file_path):\
+        file_name = os.path.basename(file_path)\
+        # 
+\f0 \'c5\'d0\'b6\'cf\'ce\'c4\'bc\'fe\'c3\'fb\'ca\'c7\'b7\'f1\'b0\'fc\'ba\'ac\'c8\'ce\'ba\'ce\'b9\'d8\'bc\'fc\'d7\'d6
+\f1 \
+        return any(keyword in file_name for keyword in keywords)\
+\
+    def convert_file(self, file_path):\
+        file_name = os.path.splitext(os.path.basename(file_path))[0]\
+\
+        # 
+\f0 \'bc\'ec\'b2\'e9\'ca\'c7\'b7\'f1\'d2\'d1\'be\'ad\'b4\'a6\'c0\'ed\'b9\'fd
+\f1 \
+        if self.is_already_processed(file_name):\
+            print(f\'94Skipping \{file_name\}, already processed.\'94)\
+            return\
+        \
+        # 
+\f0 \'ca\'e4\'b3\'f6\'ce\'c4\'bc\'fe\'c2\'b7\'be\'b6
+\f1 \
+        epub_output = os.path.join(output_directory, f\'94\{file_name\}.epub\'94)\
+        doc_output = os.path.join(output_directory, f\'94\{file_name\}.doc\'94)\
+\
+        # 
+\f0 \'d7\'aa\'bb\'bb\'ce\'aa
+\f1  epub\
+        pypandoc.convert_file(file_path, \'91epub\'92, outputfile=epub_output)\
+        print(f\'94Converted \{file_path\} to \{epub_output\}\'94)\
+        \
+        # 
+\f0 \'d7\'aa\'bb\'bb\'ce\'aa
+\f1  doc\
+        pypandoc.convert_file(file_path, \'91doc\'92, outputfile=doc_output)\
+        print(f\'94Converted \{file_path\} to \{doc_output\}\'94)\
+\
+        # 
+\f0 \'bc\'c7\'c2\'bc\'d2\'d1\'be\'ad\'b4\'a6\'c0\'ed\'b5\'c4\'ce\'c4\'bc\'fe
+\f1 \
+        self.log_processed_file(file_name)\
+\
+    def is_already_processed(self, file_name):\
+        # 
+\f0 \'bc\'ec\'b2\'e9\'c8\'d5\'d6\'be\'ce\'c4\'bc\'fe\'ca\'c7\'b7\'f1\'b4\'e6\'d4\'da
+\f1 \
+        if not os.path.exists(log_file_path):\
+            return False\
+        \
+        with open(log_file_path, \'91r\'92) as log_file:\
+            processed_files = log_file.read().splitlines()\
+            return file_name in processed_files\
+\
+    def log_processed_file(self, file_name):\
+        with open(log_file_path, \'91a\'92) as log_file:\
+            log_file.write(file_name + \'91\\n\'92)\
+\
+# 
+\f0 \'c9\'a8\'c3\'e8\'ce\'c4\'bc\'fe\'bc\'d0
+\f1 \
+def scan_directory():\
+    for root, _, files in os.walk(source_directory):\
+        for file in files:\
+            if file.endswith(\'93.md\'94):\
+                file_path = os.path.join(root, file)\
+                if handler.contains_keywords(file_path):\
+                    handler.convert_file(file_path)\
+\
+if __name__ == \'93__main__\'94:\
+    handler = FileHandler()\
+\
+    # 
+\f0 \'c6\'f4\'b6\'af
+\f1  watchdog 
+\f0 \'b9\'db\'b2\'ec\'d5\'df\'a3\'ac\'b5\'dd\'b9\'e9\'bc\'e0\'bf\'d8\'d7\'d3\'ce\'c4\'bc\'fe\'bc\'d0
+\f1 \
+    observer = Observer()\
+    observer.schedule(handler, path=source_directory, recursive=True)\
+    observer.start()\
+\
+    try:\
+        # 
+\f0 \'b3\'f5\'ca\'bc\'c9\'a8\'c3\'e8\'c4\'bf\'c2\'bc\'a3\'ac\'c8\'b7\'b1\'a3\'c6\'f4\'b6\'af\'ca\'b1\'d2\'d1\'d3\'d0\'b5\'c4
+\f1 .md 
+\f0 \'ce\'c4\'bc\'fe\'d2\'b2\'c4\'dc\'b1\'bb\'b4\'a6\'c0\'ed
+\f1 \
+        scan_directory()\
+        while True:\
+            time.sleep(10)  # 
+\f0 \'c3\'bf
+\f1  10 
+\f0 \'c3\'eb\'c9\'a8\'c3\'e8\'d2\'bb\'b4\'ce
+\f1 \
+    except KeyboardInterrupt:\
+        observer.stop()\
+    observer.join()\
+```\
+\
+### 
+\f0 \'ca\'b9\'d3\'c3\'cb\'b5\'c3\'f7
+\f1 \
+\
+#### 1. 
+\f0 \'b0\'b2\'d7\'b0\'d2\'c0\'c0\'b5
+\f1 \
+\
+
+\f0 \'ca\'d7\'cf\'c8\'a3\'ac\'c4\'e3\'d0\'e8\'d2\'aa\'d4\'da\'cf\'b5\'cd\'b3\'c9\'cf\'b0\'b2\'d7\'b0
+\f1  `pandoc` 
+\f0 \'b9\'a4\'be\'df\'d2\'d4\'bc\'b0\'cb\'f9\'d0\'e8\'b5\'c4
+\f1  Python 
+\f0 \'b0\'fc\'a1\'a3\'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fd\'d2\'d4\'cf\'c2\'c3\'fc\'c1\'ee\'cd\'ea\'b3\'c9\'b0\'b2\'d7\'b0\'a3\'ba
+\f1 \
+\
+```bash\
+brew install pandoc\
+pip install pypandoc watchdog\
+```\
+\
+#### 2. 
+\f0 \'c5\'e4\'d6\'c3\'bd\'c5\'b1\'be
+\f1 \
+\
+
+\f0 \'b4\'f2\'bf\'aa\'bd\'c5\'b1\'be\'ce\'c4\'bc\'fe\'a3\'ac\'b1\'e0\'bc\'ad\'d2\'d4\'cf\'c2\'c5\'e4\'d6\'c3\'cf\'ee\'a3\'ba
+\f1 \
+\
+- **`source_directory`**: 
+\f0 \'c9\'e8\'d6\'c3\'c4\'e3\'cf\'eb\'d2\'aa\'c9\'a8\'c3\'e8\'b5\'c4\'d4\'b4\'ce\'c4\'bc\'fe\'bc\'d0\'c2\'b7\'be\'b6\'a1\'a3
+\f1 \
+- **`output_directory`**: 
+\f0 \'c9\'e8\'d6\'c3\'c4\'e3\'cf\'eb\'d2\'aa\'b1\'a3\'b4\'e6\'d7\'aa\'bb\'bb\'ce\'c4\'bc\'fe\'b5\'c4\'c4\'bf\'b1\'ea\'ce\'c4\'bc\'fe\'bc\'d0\'c2\'b7\'be\'b6\'a1\'a3
+\f1 \
+- **`keywords`**: 
+\f0 \'d4\'da\'d5\'e2\'c0\'ef\'cc\'ed\'bc\'d3\'c4\'e3\'cf\'eb\'d2\'aa\'c6\'a5\'c5\'e4\'b5\'c4\'b9\'d8\'bc\'fc\'d7\'d6\'a3\'ac\'d6\'bb\'d3\'d0\'ce\'c4\'bc\'fe\'c3\'fb\'b0\'fc\'ba\'ac\'d5\'e2\'d0\'a9\'b9\'d8\'bc\'fc\'d7\'d6\'b5\'c4
+\f1  `.md` 
+\f0 \'ce\'c4\'bc\'fe\'b2\'c5\'bb\'e1\'b1\'bb\'b4\'a6\'c0\'ed\'a1\'a3
+\f1 \
+\
+#### 3. 
+\f0 \'d4\'cb\'d0\'d0\'bd\'c5\'b1\'be
+\f1 \
+\
+
+\f0 \'bd\'ab\'bd\'c5\'b1\'be\'b1\'a3\'b4\'e6\'ce\'aa
+\f1  `convert_md_to_formats.py`
+\f0 \'a3\'ac\'c8\'bb\'ba\'f3\'d4\'da\'d6\'d5\'b6\'cb\'d6\'d0\'d4\'cb\'d0\'d0\'d2\'d4\'cf\'c2\'c3\'fc\'c1\'ee\'a3\'ba
+\f1 \
+\
+```bash\
+python convert_md_to_formats.py\
+```\
+\
+
+\f0 \'bd\'c5\'b1\'be\'bb\'e1\'bf\'aa\'ca\'bc\'c9\'a8\'c3\'e8\'d6\'b8\'b6\'a8\'c2\'b7\'be\'b6\'bc\'b0\'c6\'e4\'cb\'f9\'d3\'d0\'d7\'d3\'ce\'c4\'bc\'fe\'bc\'d0\'d6\'d0\'b5\'c4
+\f1  `.md` 
+\f0 \'ce\'c4\'bc\'fe\'a3\'ac\'b2\'a2\'b8\'f9\'be\'dd\'d7\'d4\'b6\'a8\'d2\'e5\'b9\'d8\'bc\'fc\'d7\'d6\'bd\'f8\'d0\'d0\'b9\'fd\'c2\'cb\'ba\'cd\'d7\'aa\'bb\'bb\'a1\'a3\'d7\'aa\'bb\'bb\'ba\'f3\'b5\'c4
+\f1  `.epub` 
+\f0 \'ba\'cd
+\f1  `.doc` 
+\f0 \'ce\'c4\'bc\'fe\'bd\'ab\'b1\'a3\'b4\'e6\'d4\'da\'d6\'b8\'b6\'a8\'b5\'c4\'ca\'e4\'b3\'f6\'c4\'bf\'c2\'bc\'d6\'d0\'a1\'a3
+\f1 \
+\
+#### 4. 
+\f0 \'c8\'d5\'d6\'be\'ce\'c4\'bc\'fe
+\f1 \
+\
+
+\f0 \'b3\'cc\'d0\'f2\'bb\'e1\'d4\'da\'b5\'b1\'c7\'b0\'c4\'bf\'c2\'bc\'cf\'c2\'c9\'fa\'b3\'c9\'d2\'bb\'b8\'f6\'c3\'fb\'ce\'aa
+\f1  `processed_files.log` 
+\f0 \'b5\'c4\'c8\'d5\'d6\'be\'ce\'c4\'bc\'fe\'a3\'ac\'bc\'c7\'c2\'bc\'d2\'d1\'be\'ad\'b4\'a6\'c0\'ed\'b9\'fd\'b5\'c4\'ce\'c4\'bc\'fe\'c3\'fb\'a1\'a3\'bd\'c5\'b1\'be\'c3\'bf\'b4\'ce\'d4\'cb\'d0\'d0\'ca\'b1\'b6\'bc\'bb\'e1\'bc\'ec\'b2\'e9\'c8\'d5\'d6\'be\'ce\'c4\'bc\'fe\'a3\'ac\'d2\'d4\'b1\'dc\'c3\'e2\'d6\'d8\'b8\'b4\'d7\'aa\'bb\'bb\'a1\'a3
+\f1 \
+\
+#### 5. 
+\f0 \'cd\'a3\'d6\'b9\'bd\'c5\'b1\'be
+\f1 \
+\
+
+\f0 \'d2\'aa\'cd\'a3\'d6\'b9\'bd\'c5\'b1\'be\'a3\'ac\'bf\'c9\'d2\'d4\'d4\'da\'d6\'d5\'b6\'cb\'d6\'d0\'b0\'b4\'cf\'c2
+\f1  `Ctrl+C`
+\f0 \'a1\'a3\'d5\'e2\'bd\'ab\'bb\'e1\'d6\'d0\'b6\'cf\'bd\'c5\'b1\'be\'b5\'c4\'d6\'b4\'d0\'d0\'a3\'ac\'b2\'a2\'cd\'a3\'d6\'b9\'ce\'c4\'bc\'fe\'bc\'d0\'bc\'e0\'bf\'d8\'a1\'a3
+\f1 \
+\
+#### 6. 
+\f0 \'bf\'c9\'d1\'a1\'a3\'ba\'b6\'a8\'ca\'b1\'c8\'ce\'ce\'f1
+\f1 \
+\
+
+\f0 \'c8\'e7\'b9\'fb\'c4\'e3\'cf\'a3\'cd\'fb\'b6\'a8\'ca\'b1\'d4\'cb\'d0\'d0\'bd\'c5\'b1\'be\'a3\'ac\'b6\'f8\'b2\'bb\'ca\'c7\'b3\'d6\'d0\'f8\'bc\'e0\'bf\'d8\'a3\'ac\'bf\'c9\'d2\'d4\'ca\'b9\'d3\'c3
+\f1  `cron` 
+\f0 \'c0\'b4\'c9\'e8\'d6\'c3\'b6\'a8\'ca\'b1\'c8\'ce\'ce\'f1\'a1\'a3\'c0\'fd\'c8\'e7\'a3\'ac\'c3\'bf\'d0\'a1\'ca\'b1\'d4\'cb\'d0\'d0\'d2\'bb\'b4\'ce\'bd\'c5\'b1\'be\'a3\'ba
+\f1 \
+\
+```bash\
+crontab -e\
+```\
+\
+
+\f0 \'cc\'ed\'bc\'d3\'d2\'d4\'cf\'c2\'d0\'d0\'a3\'ba
+\f1 \
+\
+```bash\
+0 * * * * /usr/bin/python3 /path/to/your/convert_md_to_formats.py\
+```\
+\
+
+\f0 \'d5\'e2\'d0\'d0\'c3\'fc\'c1\'ee\'bd\'ab\'c3\'bf\'d0\'a1\'ca\'b1\'d4\'cb\'d0\'d0\'d2\'bb\'b4\'ce\'bd\'c5\'b1\'be\'a1\'a3\'c8\'b7\'b1\'a3\'bd\'ab\'c2\'b7\'be\'b6\'cc\'e6\'bb\'bb\'ce\'aa\'c4\'e3\'b5\'c4\'ca\'b5\'bc\'ca\'bd\'c5\'b1\'be\'c2\'b7\'be\'b6\'a1\'a3
+\f1 \
+\
+### 
+\f0 \'d7\'dc\'bd\'e1
+\f1 \
+\
+
+\f0 \'d5\'e2\'b6\'ce\'b4\'fa\'c2\'eb\'d2\'d1\'be\'ad\'c2\'fa\'d7\'e3\'d7\'d4\'b6\'af\'c9\'a8\'c3\'e8\'a1\'a2\'b9\'d8\'bc\'fc\'d7\'d6\'b9\'fd\'c2\'cb\'a1\'a2\'b1\'dc\'c3\'e2\'d6\'d8\'b8\'b4\'d7\'aa\'bb\'bb\'b5\'c4\'d0\'e8\'c7\'f3\'a1\'a3\'d6\'bb\'d0\'e8\'c5\'e4\'d6\'c3\'d4\'b4\'ce\'c4\'bc\'fe\'bc\'d0\'a1\'a2\'ca\'e4\'b3\'f6\'ce\'c4\'bc\'fe\'bc\'d0\
+\'ba\'cd\'b9\'d8\'bc\'fc\'d7\'d6\'bc\'b4\'bf\'c9\'a1\'a3\'d7\'aa\'bb\'bb\'b9\'fd\'b3\'cc\'bd\'ab\'d7\'d4\'b6\'af\'bd\'f8\'d0\'d0\'a3\'ac\'b2\'a2\'c7\'d2\'d0\'c2\'cc\'ed\'bc\'d3\'b5\'c4\'ce\'c4\'bc\'fe\'d2\'b2\'c4\'dc\'b1\'bb\'ca\'b5\'ca\'b1\'bc\'e0\'bf\'d8\'a1\'a3\'c8\'e7\'b9\'fb\'d0\'e8\'d2\'aa\'bd\'f8\'d2\'bb\'b2\'bd\'b5\'c4\'d3\'c5\'bb\'af\'bb\'f2\'d3\'d0\'c6\'e4\'cb\'fb\'d0\'e8\'c7\'f3\'a3\'ac\'cb\'e6\'ca\'b1\'c1\'aa\'cf\'b5\'ce\'d2\'a3\'a1\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\'d2\'d4\'cf\'c2\'ca\'c7\'d0\'de\'b8\'c4\'ce\'aa\'d6\'a7\'b3\'d6 `.docx` \'d7\'aa\'bb\'bb\'b5\'c4\'cd\'ea\'d5\'fb\'b4\'fa\'c2\'eb\'a3\'ba\
+\
+```python\
+import os\
+import time\
+import pypandoc\
+from watchdog.observers import Observer\
+from watchdog.events import FileSystemEventHandler\
+\
+# \'d7\'d4\'b6\'a8\'d2\'e5\'c2\'b7\'be\'b6\
+source_directory = '/Users/bianhaiming/EnjoyLibrary/1000h-english-learning-record/'\
+output_directory = '/Users/bianhaiming/EnjoyLibrary/1000h-english-learning-record/md-2-doc-epub/'\
+\
+# \'d7\'d4\'b6\'a8\'d2\'e5\'b9\'d8\'bc\'fc\'d7\'d6\
+keywords = ['Discourse']\
+\
+# \'d2\'d1\'b4\'a6\'c0\'ed\'ce\'c4\'bc\'fe\'c1\'d0\'b1\'ed\'a3\'ac\'b1\'dc\'c3\'e2\'d6\'d8\'b8\'b4\'b4\'a6\'c0\'ed\
+processed_files = set()\
+\
+class FileHandler(FileSystemEventHandler):\
+    def on_created(self, event):\
+        if event.is_directory:\
+            return\
+        if event.src_path.endswith(".md"):\
+            self.convert_file(event.src_path)\
+\
+    def convert_file(self, file_path):\
+        file_name = os.path.splitext(os.path.basename(file_path))[0]\
+\
+        # \'bc\'ec\'b2\'e9\'ce\'c4\'bc\'fe\'c3\'fb\'ca\'c7\'b7\'f1\'b0\'fc\'ba\'ac\'b9\'d8\'bc\'fc\'d7\'d6\
+        if not any(keyword in file_name for keyword in keywords):\
+            return\
+        \
+        # \'bc\'ec\'b2\'e9\'ce\'c4\'bc\'fe\'ca\'c7\'b7\'f1\'d2\'d1\'b4\'a6\'c0\'ed\
+        if file_path in processed_files:\
+            return\
+\
+        try:\
+            # \'d7\'aa\'bb\'bb\'ce\'aa .epub \'b8\'f1\'ca\'bd\
+            epub_output = os.path.join(output_directory, f"\{file_name\}.epub")\
+            pypandoc.convert_file(file_path, 'epub', outputfile=epub_output)\
+            print(f"Converted \{file_path\} to \{epub_output\}")\
+\
+            # \'d7\'aa\'bb\'bb\'ce\'aa .docx \'b8\'f1\'ca\'bd\
+            docx_output = os.path.join(output_directory, f"\{file_name\}.docx")\
+            pypandoc.convert_file(file_path, 'docx', outputfile=docx_output)\
+            print(f"Converted \{file_path\} to \{docx_output\}")\
+\
+            # \'bc\'c7\'c2\'bc\'d2\'d1\'b4\'a6\'c0\'ed\'ce\'c4\'bc\'fe\
+            processed_files.add(file_path)\
+\
+        except Exception as e:\
+            print(f"Error converting \{file_path\}: \{e\}")\
+\
+def scan_directory():\
+    for dirpath, _, filenames in os.walk(source_directory):\
+        for filename in filenames:\
+            if filename.endswith('.md'):\
+                file_path = os.path.join(dirpath, filename)\
+                handler.convert_file(file_path)\
+\
+if __name__ == "__main__":\
+    handler = FileHandler()\
+\
+    # \'b3\'f5\'ca\'bc\'c9\'a8\'c3\'e8\
+    scan_directory()\
+\
+    # \'ca\'b5\'ca\'b1\'bc\'e0\'b2\'e2\
+    observer = Observer()\
+    observer.schedule(handler, path=source_directory, recursive=True)\
+    observer.start()\
+\
+    try:\
+        while True:\
+            time.sleep(1)\
+    except KeyboardInterrupt:\
+        observer.stop()\
+\
+    observer.join()\
+```\
+\
+### \'ca\'b9\'d3\'c3\'cb\'b5\'c3\'f7\'a3\'ba\
+1. **\'c9\'e8\'d6\'c3\'c4\'bf\'c2\'bc\'c2\'b7\'be\'b6**\'a3\'ba\
+   - `source_directory`: \'c4\'e3\'cf\'eb\'d2\'aa\'c9\'a8\'c3\'e8\'b5\'c4\'c4\'bf\'c2\'bc\'c2\'b7\'be\'b6\'a1\'a3\
+   - `output_directory`: \'d7\'aa\'bb\'bb\'ba\'f3\'b5\'c4\'ce\'c4\'bc\'fe\'b1\'a3\'b4\'e6\'b5\'c4\'c2\'b7\'be\'b6\'a1\'a3\
+\
+2. **\'c9\'e8\'d6\'c3\'b9\'d8\'bc\'fc\'d7\'d6**\'a3\'ba\
+   - `keywords`: \'d7\'d4\'b6\'a8\'d2\'e5\'b5\'c4\'b9\'d8\'bc\'fc\'d7\'d6\'c1\'d0\'b1\'ed\'a3\'ac\'d6\'bb\'d3\'d0\'b0\'fc\'ba\'ac\'d5\'e2\'d0\'a9\'b9\'d8\'bc\'fc\'d7\'d6\'b5\'c4\'ce\'c4\'bc\'fe\'b2\'c5\'bb\'e1\'b1\'bb\'d7\'aa\'bb\'bb\'a1\'a3\
+\
+3. **\'d4\'cb\'d0\'d0\'b3\'cc\'d0\'f2**\'a3\'ba\
+   - \'ca\'b9\'d3\'c3\'d6\'d5\'b6\'cb\'d4\'cb\'d0\'d0\'bd\'c5\'b1\'be\'a3\'ba\
+     ```bash\
+     python /Users/bianhaiming/EnjoyLibrary/1000h-english-learning-record/md-2-doc-epub/convert_md_to_formats.py\
+     ```\
+\
+4. **\'b9\'a6\'c4\'dc**\'a3\'ba\
+   - \'b3\'cc\'d0\'f2\'bb\'e1\'ca\'d7\'cf\'c8\'b6\'d4\'d6\'b8\'b6\'a8\'c4\'bf\'c2\'bc\'bc\'b0\'c6\'e4\'d7\'d3\'c4\'bf\'c2\'bc\'bd\'f8\'d0\'d0\'d2\'bb\'b4\'ce\'c9\'a8\'c3\'e8\'a3\'ac\'d5\'d2\'b5\'bd\'cb\'f9\'d3\'d0\'b7\'fb\'ba\'cf\'cc\'f5\'bc\'fe\'b5\'c4 `.md` \'ce\'c4\'bc\'fe\'b2\'a2\'bd\'f8\'d0\'d0\'d7\'aa\'bb\'bb\'a1\'a3\
+   - \'d6\'ae\'ba\'f3\'a3\'ac\'b3\'cc\'d0\'f2\'bb\'e1\'b3\'d6\'d0\'f8\'bc\'e0\'bf\'d8\'c4\'bf\'c2\'bc\'c4\'da\'b5\'c4\'ce\'c4\'bc\'fe\'b1\'e4\'bb\'af\'a3\'ac\'c8\'e7\'b9\'fb\'d3\'d0\'d0\'c2\'b5\'c4 `.md` \'ce\'c4\'bc\'fe\'b1\'bb\'b4\'b4\'bd\'a8\'c7\'d2\'b7\'fb\'ba\'cf\'b9\'d8\'bc\'fc\'d7\'d6\'cc\'f5\'bc\'fe\'a3\'ac\'d2\'b2\'bb\'e1\'d7\'d4\'b6\'af\'bd\'f8\'d0\'d0\'d7\'aa\'bb\'bb\'a1\'a3\
+\
+\'c8\'e7\'b9\'fb\'d3\'d0\'c6\'e4\'cb\'fb\'ce\'ca\'cc\'e2\'a3\'ac\'bb\'f2\'d0\'e8\'d2\'aa\'bd\'f8\'d2\'bb\'b2\'bd\'b5\'c4\'b0\'ef\'d6\'fa\'a3\'ac\'c7\'eb\'b8\'e6\'cb\'df\'ce\'d2\'a3\'a1}
