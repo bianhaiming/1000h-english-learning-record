@@ -1,11 +1,10 @@
-def main():
-
 from docx import Document
 from docx.shared import Pt, Inches
 from docx.oxml.ns import qn
 import os
 from docx.oxml import OxmlElement
 
+# 设置字体优先级列表
 font_preferences = ["Segoe Print", "Ink Free", "微软雅黑"]
 
 def get_preferred_font():
@@ -15,6 +14,7 @@ def get_preferred_font():
     return "Times New Roman"
 
 def check_font_availability(font_name):
+    # 实际实现字体检查功能
     return True
 
 def adjust_margins_and_columns(doc):
@@ -24,6 +24,7 @@ def adjust_margins_and_columns(doc):
         section.left_margin = Inches(0.2)
         section.right_margin = Inches(0.2)
 
+        # 确保存在 cols 元素，否则创建一个
         cols = section._sectPr.xpath("./w:cols")
         if not cols:
             cols_element = OxmlElement('w:cols')
@@ -40,8 +41,13 @@ def reformat_docx(file_path, output_path):
     
     total_length = sum(len(p.text) for p in doc.paragraphs)
     
-    font_size = Pt(9.0) if total_length < 500 else Pt(9)
-    
+    if total_length < 500:
+        font_size = Pt(9.0)
+    elif total_length < 1000:
+        font_size = Pt(9)
+    else:
+        font_size = Pt(9)
+
     preferred_font = get_preferred_font()
 
     for para in doc.paragraphs:
@@ -69,10 +75,6 @@ def scan_and_reformat(source_path, output_path):
             reformat_docx(file_path, output_path)
 
 if __name__ == "__main__":
-    source_path = "/data/data/com.termux/files/home/EnjoyLibrary/1000h-english-learning-record/xiaolai_2024xxxx/docx-and-epub"
-    output_path = "/data/data/com.termux/files/home/EnjoyLibrary/1000h-english-learning-record/xiaolai_2024xxxx/reformat-docx"
+    source_path = "/data/data/com.termux/files/home/EnjoyLibrary/1000h-english-learning-record/md-2-doc-epub/docx-and-epub"
+    output_path = "/data/data/com.termux/files/home/EnjoyLibrary/1000h-english-learning-record/reformate-docx"
     scan_and_reformat(source_path, output_path)
-
-
-if __name__ == "__main__":
-    main()
