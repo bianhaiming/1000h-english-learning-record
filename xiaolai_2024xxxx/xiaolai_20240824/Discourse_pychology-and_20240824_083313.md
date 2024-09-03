@@ -4,6 +4,9 @@
 
 0824_pychology-and_discourse
 
+
+0824_pychology-and_discourse
+
 Our journey through life often hinges on our mental fortitude and resilience. While external circumstances can easily throw us off course, our focus should remain on personal progress. It’s easy to get caught up in the whirlwind of emotions that the world throws at us, but cultivating an inner peace is essential. A growth mindset is not just a catchphrase; it’s a daily commitment to bettering oneself, even when the chips are down.
 
 There will always be days when the sun refuses to shine on our spirits. On these gloomy days, it’s imperative to seek out mental nourishment. Think of it as a psychological check-in. Engaging in self-reflection, seeking support from friends, or simply allowing oneself the grace of patience can kindle that spark of progress. It’s about turning setbacks into setups for comebacks. Happiness is a lovely destination, but it’s not the only stopping point on this journey. 

@@ -5,6 +5,9 @@
 0821_listen-to_conversation
 
 
+0821_listen-to_conversation
+
+
 ## Conversation 1: Listening to People vs. Reason
 
 **Alloy**: You know, I think people should really prioritize listening to reason rather than just following what others say.

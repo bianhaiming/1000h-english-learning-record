@@ -5,6 +5,9 @@
 0822_difficulties-and_conversation
 
 
+0822_difficulties-and_conversation
+
+
 ## Conversation 1: Learning from Difficult Situations
 
 **Alloy**: You know, I've been thinking about all the tough times I've had. They really do shape us.
