@@ -8,6 +8,9 @@
 0829_Invisible-diferences_conversation
 
 
+0829_Invisible-diferences_conversation
+
+
 ## Conversation 1: Invisible Differences Among Individuals
 
 **Alloy**: You know, I've been thinking about how many differences we have that are totally invisible.

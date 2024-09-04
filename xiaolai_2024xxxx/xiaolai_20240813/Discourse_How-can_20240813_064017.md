@@ -7,6 +7,9 @@
 
 0813_How-can_discourse
 
+
+0813_How-can_discourse
+
 In today's digital landscape, it can be challenging to teach kids about the inherent flaws and shortcomings that every person possesses, including their parents. The rise of social media has created an environment where "perfection" is often highlighted, leading many to believe that shortcomings are something to be ashamed of rather than accepted as part of the human experience. The difference between reality and the curated images we see on social platforms can create pressure not just for individuals, but for families as a whole. 
 
 One of the first steps in addressing this issue is for parents to foster open communication within the home. Rather than hiding their own flaws, parents can share stories about their mistakes and the lessons learned from them. By being transparent about their own imperfections, they can demonstrate that nobody is perfect and that everyone faces challenges. This communication establishes a foundation of trust and reinforces the idea that it's okay to be vulnerable. Kids who grow up understanding that their parents are human, with their own struggles and successes, are more likely to feel comfortable discussing their own issues, fostering a sense of community and empathy within the family.

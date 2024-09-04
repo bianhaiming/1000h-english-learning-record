@@ -8,6 +8,9 @@
 0823_learning-and_conversation
 
 
+0823_learning-and_conversation
+
+
 ## Conversation 1: The Balance Between Learning and Practicing
 
 **Alloy**: You know, I believe that practicing is way more important than just learning.

@@ -7,6 +7,9 @@
 
 0823_learning-and_discourse
 
+
+0823_learning-and_discourse
+
 Mastering a skill is much like honing a craft with a chisel: learning provides the foundational knowledge, but it is practice that shapes the masterpiece. In a world where knowledge is at our fingertips, the danger lies not in a lack of information, but in our failure to translate that information into action. Learning is an essential first step, akin to gathering the raw materials needed for a project; however, it is through rigorous practice that we refine those materials into something meaningful.
 
 Think about it this way: learning serves as our intellectual toolbox, while practice is the actual construction work. When we engage in practical application, we’re not merely reviewing what we've learned; we’re embedding those ideas into our very being, making them second nature. This transformation is what separates the novices from the experts. For instance, a musician can study music theory for years, but without consistent practice, those notes on a page remain just that — notes on a page.

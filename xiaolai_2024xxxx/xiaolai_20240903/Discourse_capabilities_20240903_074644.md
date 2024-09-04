@@ -1,6 +1,9 @@
 
 0903_capabilities_discourse
 
+
+0903_capabilities_discourse
+
 Every challenge we face carves out pathways to growth, often in ways we can’t fully appreciate until we look back. Difficult situations can feel overwhelming, yet they hold the keys to developing our capabilities and resilience. Life’s greatest lessons rarely come wrapped in comfort and ease; rather, they bloom in the soil of adversity. 
 
 For children, the temptation to swoop in and solve their problems can be strong for parents. After all, protecting our kids from hardship seems like an act of love. However, this well-meaning approach may inadvertently stifle their ability to navigate life's hurdles. Each time a parent resolves an issue for their child, they rob them of the chance to learn problem-solving skills that will serve them throughout life. Children aren’t born with the solutions; they need to wrestle with challenges to develop their own toolkits for tackling obstacles. 

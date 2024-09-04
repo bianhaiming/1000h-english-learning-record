@@ -7,6 +7,9 @@
 
 0830_Passive_discourse
 
+
+0830_Passive_discourse
+
 In the grand tapestry of life, accumulation often gets a bad rap; it’s seen as a grueling process requiring unwavering determination, patience, and time. Yet, if we take a closer look, we’ll find that not all forms of accumulation demand relentless effort. In fact, some gains come simply from letting nature take its course.
 
 Take tree planting, for instance. Sure, there’s work involved in planting the saplings each year — it’s hard graft that requires a bit of elbow grease. However, once those trees take root, they grow without us having to constantly hover over them. The daily growth is a passive affair; we reap the benefits without lifting a finger beyond that initial planting.

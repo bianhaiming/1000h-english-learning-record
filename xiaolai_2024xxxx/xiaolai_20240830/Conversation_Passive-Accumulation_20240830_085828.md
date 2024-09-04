@@ -8,6 +8,9 @@
 0830_Passive-Accumulation_conversation
 
 
+0830_Passive-Accumulation_conversation
+
+
 ## Conversation 1: Passive Accumulation in Life
 
 **Alloy**: You know, I’ve been thinking a lot about how accumulation in life can often feel passive.
