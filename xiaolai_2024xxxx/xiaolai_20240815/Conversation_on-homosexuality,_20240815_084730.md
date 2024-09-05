@@ -11,6 +11,9 @@
 0815_on-homosexuality,_conversation
 
 
+0815_on-homosexuality,_conversation
+
+
 ## Conversation 1: Concerns about Influences on Sexual Orientation
 
 **Alloy**: You know, I've been thinking about how our society portrays different sexual orientations lately.

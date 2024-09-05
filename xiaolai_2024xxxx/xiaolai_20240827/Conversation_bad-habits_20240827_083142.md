@@ -11,6 +11,9 @@
 0827_bad-habits_conversation
 
 
+0827_bad-habits_conversation
+
+
 ## Conversation 1: Bad Habits as Debts
 
 **Alloy**: You ever think about how our bad habits are like debts we owe ourselves?

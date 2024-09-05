@@ -10,6 +10,9 @@
 
 0821_listen-to_discourse
 
+
+0821_listen-to_discourse
+
 When the wisdom of adults is filtered through the lens of childhood, messages can become muddled, leading to a phenomenon that's all too common: following orders without considering their merit. “Listen to what I say” morphs into “just listen,” creating a dangerous precedent for blind obedience. This isn’t just a benign miscommunication; rather, it plays a crucial role in shaping how young minds perceive authority and navigate the complexities of the world around them.
 
 At first glance, adults may believe they are imparting lessons of respect and discipline. However, the outcome can lead to a troubling disregard for reasoning and critical thought. Children, in their innocence, receive the underlying message that compliance is paramount — regardless of whether the orders given are rational or beneficial. They learn to equate obedience with loyalty, often at the cost of their own ability to think independently. 
