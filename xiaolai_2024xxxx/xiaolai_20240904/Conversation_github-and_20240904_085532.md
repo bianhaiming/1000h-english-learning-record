@@ -1,7 +1,4 @@
 
-0904_github-and_conversation
-
-
 ## Conversation 1: The Use of GitHub for Writers
 
 **Alloy**: You know, I really think GitHub is an underappreciated tool for writers.
